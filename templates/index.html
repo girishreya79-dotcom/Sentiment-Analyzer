@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Sentiment Analyzer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f4f1ff, #fceef7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(80, 60, 130, 0.12);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .small-title {
+            color: #6d5dfc;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            color: #252238;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #777;
+            font-size: 14px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 130px;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            resize: none;
+            outline: none;
+            font-size: 14px;
+            line-height: 1.5;
+            background: #fafafa;
+        }
+
+        textarea:focus {
+            border-color: #7567f8;
+            background: white;
+            box-shadow: 0 0 0 3px #eeeaff;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 13px;
+            padding: 12px;
+            border: none;
+            border-radius: 11px;
+            background: linear-gradient(90deg, #635bdb, #8b5cf6);
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 7px 18px rgba(99, 91, 219, 0.25);
+        }
+
+        .result {
+            margin-top: 22px;
+            padding: 18px;
+            text-align: center;
+            border-radius: 13px;
+            background: #f7f5ff;
+            border: 1px solid #ebe7ff;
+        }
+
+        .result-title {
+            color: #777;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+
+        .sentiment {
+            color: #635bdb;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .score {
+            color: #777;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 22px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .name {
+            color: #635bdb;
+            font-weight: bold;
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                padding: 25px 20px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="header">
+            <div class="small-title">NATURAL LANGUAGE PROCESSING</div>
+
+            <h1>AI Sentiment Analyzer</h1>
+
+            <p class="subtitle">
+                Analyze the sentiment behind your words.
+            </p>
+        </div>
+
+        <form method="POST">
+
+            <label for="text">Enter your text</label>
+
+            <textarea
+                id="text"
+                name="text"
+                placeholder="Write something here..."
+                required>{{ text }}</textarea>
+
+            <button type="submit">
+                Analyze Sentiment
+            </button>
+
+        </form>
+
+        {% if sentiment %}
+
+        <div class="result">
+
+            <div class="result-title">
+                Sentiment Detected
+            </div>
+
+            <div class="sentiment">
+                {{ sentiment }}
+            </div>
+
+            <div class="score">
+                Polarity Score: {{ polarity }}
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        <div class="footer">
+            Built with Python, Flask & TextBlob
+            <br>
+            By <span class="name">Shreya Kumari</span>
+        </div>
+
+    </div>
+
+</body>
+</html>
